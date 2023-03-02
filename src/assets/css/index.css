@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+table{
+  margin: 0 auto;
+  width: 80%;
+}
+
+th{
+  background-color: rgb(68, 109, 109);
+  padding:5px 20px;
+  color:whitesmoke
+}
+
+.table-data {
+  text-align: center;
+  padding: 5px 10px;
+  background-color:rgb(206, 229, 236)
+}
