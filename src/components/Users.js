@@ -1,33 +1,40 @@
 import React, {Component, useEffect, useState} from "react";
+import Alert from 'react-bootstrap/Alert';
 import axios from "axios";
+import alertify from 'alertifyjs';
+import 'alertifyjs/build/css/alertify.css';
 
 
-async function UpdateAmount(id, type){ 
+export async function UpdateAmount(id, type){ 
     const headers = {
-        // 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
-        // 'Access-Control-Allow-Methods': '*',
-        "Content-Type": "application/json"
-      }; 
+       "Content-Type": "application/json"
+    }; 
     let amount = 0
     let atm = { id: id, user_atm: { amount: 0}, type: true}
     if(type == 1){
-        amount = document.getElementById('withdrawals_'+id).value
+        amount = parseInt(document.getElementById('withdrawals_'+id).value)
         atm.user_atm.amount = amount
     }else if( type == 2){
-        amount = document.getElementById('deposit_'+id).value
+        amount = parseInt(document.getElementById('deposit_'+id).value)
         atm.user_atm.amount = amount
         atm.type = false
     }
     await axios
         .put("https://atmapi.fly.dev/api/update/", atm, {headers: headers})
         .then((response) => {
-            console.log('Ya sirvió')
-            console.log('Response update withh ', response)
+            if(response.data.ok){
+                alertify.success('Transacción exitosa')
+            }else if(response.data.error){
+                alertify.warning('Transacción no exitosa')
+            }
+            else{
+                alertify.error('Error')
+            }
+        }).catch( err => {
+            console.error('ATM error ', err)
         });
 
 }
-
 
 function Users(){
     const [users, setUsers] = useState([]);
@@ -45,6 +52,9 @@ function Users(){
     }, []);
     return(
         <div>
+            <div id="message_result">
+
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -79,6 +89,7 @@ function Users(){
                     }
                 </tbody>
             </table>
+            
         </div>
         
     )
