@@ -1,5 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
-import Alert from 'react-bootstrap/Alert';
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.css';
@@ -30,6 +29,8 @@ export async function UpdateAmount(id, type){
             else{
                 alertify.error('Error')
             }
+            document.getElementById('withdrawals_'+id).value = 0
+            document.getElementById('deposit_'+id).value = 0
         }).catch( err => {
             console.error('ATM error ', err)
         });
@@ -49,12 +50,9 @@ function Users(){
         }
         
         getUsers();
-    }, []);
+    }, [users]);
     return(
         <div>
-            <div id="message_result">
-
-            </div>
             <table>
                 <thead>
                     <tr>
