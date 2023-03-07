@@ -7,10 +7,12 @@ import alertify from 'alertifyjs';
 import Button from 'react-bootstrap/Button';
 
 let balance = 0
-
 const CheckBalance = async () => {
-    let id = document.getElementById("nick_name").value
-    await axios
+    let id = document.getElementById("id").value
+    const regex = /^[0-9]*$/;
+    const onlyNumbers = regex.test(id); // true
+    if(onlyNumbers){
+      await axios
           .get("https://atmapi.fly.dev/api/founds/"+id)
           .then((response) => {
               if(response.data.balance){
@@ -26,6 +28,10 @@ const CheckBalance = async () => {
           }).catch( err => {
               console.error('ATM error ', err)
           });
+    }else{
+      // Bad id, only numbers
+      alertify.error('El usuario no existe')
+    }
 }
 
 function Requests() {
@@ -34,10 +40,10 @@ function Requests() {
         <Row className="justify-content-md-center mb-3">
           <Col></Col>
           <Col xs lg="2">
-            <Form.Label className="md-6" htmlFor="input_nick_name">Id de usuario</Form.Label>
+            <Form.Label className="md-6" htmlFor="input_id">Id de usuario</Form.Label>
             <Form.Control
               type="text"
-              id="nick_name"
+              id="id"
             />
           </Col>
           <Col></Col>
