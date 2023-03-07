@@ -10,10 +10,10 @@ export async function UpdateAmount(id, type){
     }; 
     let amount = 0
     let atm = { id: id, user_atm: { amount: 0}, type: true}
-    if(type == 1){
+    if(type === 1){
         amount = parseInt(document.getElementById('withdrawals_'+id).value)
         atm.user_atm.amount = amount
-    }else if( type == 2){
+    }else if( type === 2){
         amount = parseInt(document.getElementById('deposit_'+id).value)
         atm.user_atm.amount = amount
         atm.type = false

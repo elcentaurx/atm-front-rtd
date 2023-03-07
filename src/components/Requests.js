@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import axios from "axios";
 import alertify from 'alertifyjs';
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 let balance = 0
