@@ -13,6 +13,12 @@ For this project the following technologies were used:
 ## About
 For this web system the api in https://atmapi.fly.dev/ was used.
 
+To read more about firebase: https://firebase.google.com/docs/web/setup
+
+This project is temporarily hosted on firebase: [https://atm-rtd-front.web.app/](https://atm-rtd-front.web.app/)
+
+To upgrade to production run firebase deploy after npm run build.
+
 To see more about the api: [AtmApi](https://github.com/elcentaurx/atm).
 
 To do basic operations such as inserting users and updating their balance.
