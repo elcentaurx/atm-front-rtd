@@ -11,8 +11,8 @@ const Layout = () => {
                 <Navbar.Brand href="#home">Banco</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link  href="/">Inicio</Nav.Link>
-                    <Nav.Link  href="/request">Consultas</Nav.Link>
-                    <Nav.Link  href="/create">Crear</Nav.Link>
+                    <Nav.Link  href="/request">Consultar Usuario</Nav.Link>
+                    <Nav.Link  href="/create">Crear Usuario</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

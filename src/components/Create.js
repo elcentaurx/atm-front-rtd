@@ -18,9 +18,9 @@ const CreateUser = async () => {
         .post("https://atmapi.fly.dev/api/create/", create, {headers: headers})
         .then((response) => {
             if(response.data.ok){
-                alertify.success('Usuario creado con exito')
+                alertify.success(response.data.ok)
             }else if(response.data.error){
-                alertify.error('El usuario ya existe')
+                alertify.error(response.data.error)
             }
             else{
                 alertify.error('Error')
@@ -43,7 +43,7 @@ function Create() {
             <Row className="justify-content-md-center mb-3">
             <Col></Col>
             <Col xs lg="2">
-                <Form.Label className="md-6 mb-3" htmlFor="input_nick_name">Id de usuario</Form.Label>
+                <Form.Label className="md-6 mb-3" htmlFor="input_nick_name">Nombre de usuario</Form.Label>
                 <Form.Control
                 type="text"
                 id="nick_name"
